@@ -5,12 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Component extends Model
+class GradeType extends Model
 {
     use HasFactory;
-
-    public function componentType()
-    {
-        return $this->belongsTo(ComponentType::class);
-    }
 }

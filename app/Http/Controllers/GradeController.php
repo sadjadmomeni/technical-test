@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Component;
-use App\Models\Inspection;
+use App\Models\Grade;
 use Illuminate\Http\Request;
-use App\Models\Turbine;
 
-class TurbineController extends Controller
+class GradeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +14,8 @@ class TurbineController extends Controller
      */
     public function index()
     {
-        $turbines = Turbine::all();
-        return $turbines ? $turbines: 'error';
+        $grades = Grade::all();
+        return $grades? $grades: 'error';
     }
 
     /**
@@ -28,7 +26,7 @@ class TurbineController extends Controller
      */
     public function show($id)
     {
-        $turbine = Turbine::find($id);
-        return $turbine ? $turbine: 'error';
+        $grade = Grade::where('id', $id)->with('gradeType')->get();
+        return $grade? $grade: 'error';
     }
 }

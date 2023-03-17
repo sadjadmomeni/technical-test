@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Component extends Model
+class Farm extends Model
 {
     use HasFactory;
 
-    public function componentType()
+    public function turbines()
     {
-        return $this->belongsTo(ComponentType::class);
+        return $this->hasMany(Turbine::class);
     }
 }

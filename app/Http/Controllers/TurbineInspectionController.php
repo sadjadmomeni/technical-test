@@ -2,19 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Component;
 use App\Models\Inspection;
 use Illuminate\Http\Request;
+use App\Models\Turbine;
 
-class InspectionController extends Controller
+class TurbineInspectionController extends Controller
 {
     /**
      * Return list of the inspections for a turbine.
      *
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        $inspections = Inspection::all();
+        $inspections = Inspection::where('turbine_id', $id)->get();
         return $inspections? $inspections: 'error';
     }
 
@@ -22,11 +25,12 @@ class InspectionController extends Controller
      * Return an inspection for the turbine.
      *
      * @param  int  $id
+     * @param  int  $inspectionId
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, $inspectionId)
     {
-        $inspections = Inspection::where('id', $id)->get();
+        $inspections = Inspection::where('turbine_id', $id)->where('id', $inspectionId)->get();
         return $inspections? $inspections: 'error';
     }
 }

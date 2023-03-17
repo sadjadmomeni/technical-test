@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Component;
-use App\Models\Inspection;
+use App\Models\ComponentType;
 use Illuminate\Http\Request;
-use App\Models\Turbine;
 
-class TurbineController extends Controller
+class ComponentTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +14,8 @@ class TurbineController extends Controller
      */
     public function index()
     {
-        $turbines = Turbine::all();
-        return $turbines ? $turbines: 'error';
+        $componentTypes = ComponentType::all();
+        return $componentTypes? $componentTypes: 'error';
     }
 
     /**
@@ -28,7 +26,7 @@ class TurbineController extends Controller
      */
     public function show($id)
     {
-        $turbine = Turbine::find($id);
-        return $turbine ? $turbine: 'error';
+        $componentType = ComponentType::where('id', $id)->get();
+        return $componentType? $componentType: 'error';
     }
 }

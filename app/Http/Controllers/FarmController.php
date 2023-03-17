@@ -3,32 +3,33 @@
 namespace App\Http\Controllers;
 
 use App\Models\Component;
+use App\Models\Farm;
 use App\Models\Inspection;
-use Illuminate\Http\Request;
 use App\Models\Turbine;
+use Illuminate\Http\Request;
 
-class TurbineController extends Controller
+class FarmController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the farms.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $turbines = Turbine::all();
-        return $turbines ? $turbines: 'error';
+        $farms = Farm::all();
+        return $farms ? $farms: 'error';
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified farm.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $turbine = Turbine::find($id);
-        return $turbine ? $turbine: 'error';
+        $farm = Farm::find($id);
+        return $farm ? $farm: 'error';
     }
 }

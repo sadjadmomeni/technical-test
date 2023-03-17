@@ -18,7 +18,6 @@ return new class extends Migration
             $table->bigInteger('turbine_id')->unsigned();
             $table->string('name');
             $table->bigInteger('component_type_id')->unsigned();
-            $table->integer('grade');
             $table->timestamps();
 
             $table->foreign('turbine_id')->references('id')->on('turbines');

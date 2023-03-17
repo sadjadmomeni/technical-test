@@ -13,14 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('turbines', function (Blueprint $table) {
+        Schema::create('grade_types', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('lat');
-            $table->string('long');
-            $table->timestamps();
-            $table->bigInteger('farm_id')->unsigned();
-            $table->foreign('farm_id')->references('id')->on('farms');
         });
     }
 
@@ -31,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('turbines');
+        Schema::dropIfExists('grade_types');
     }
 };

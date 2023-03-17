@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('turbine_id')->unsigned();
             $table->timestamp('inspected_at');
-            $table->string('inspection_note');
             $table->timestamps();
 
             $table->foreign('turbine_id')->references('id')->on('turbines');
