@@ -28,8 +28,8 @@ class FarmTurbineController extends Controller
      */
     public function show($id, $turbineId)
     {
-        $turbine = Turbine::where('farm_id', $id)->where('id', $turbineId)->get();
-        return $turbine->isNotEmpty()? new FarmTurbineResource($turbine): ErrorResource::notFound();
+        $turbine = Turbine::where('farm_id', $id)->where('id', $turbineId)->first();
+        return $turbine? new FarmTurbineResource($turbine): ErrorResource::notFound();
 
     }
 }

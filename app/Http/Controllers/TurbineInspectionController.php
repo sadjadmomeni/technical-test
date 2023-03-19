@@ -28,7 +28,7 @@ class TurbineInspectionController extends Controller
      */
     public function show($id, $inspectionId)
     {
-        $inspection = Inspection::where('turbine_id', $id)->where('id', $inspectionId)->get();
-        return $inspection->isNotEmpty()? new TurbineInspectionResource($inspection): ErrorResource::notFound();
+        $inspection = Inspection::where('turbine_id', $id)->where('id', $inspectionId)->first();
+        return $inspection? new TurbineInspectionResource($inspection): ErrorResource::notFound();
     }
 }

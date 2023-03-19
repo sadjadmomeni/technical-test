@@ -26,7 +26,7 @@ class ComponentGradeController extends Controller
      */
     public function show($id, $gradeId)
     {
-        $grade = Grade::where('id', $gradeId)->where('component_id', $id)->get();
-        return $grade->isNotEmpty()? ComponentGradeResource::collection($grade): ErrorResource::notFound();
+        $grade = Grade::where('id', $gradeId)->where('component_id', $id)->first();
+        return $grade? ComponentGradeResource::collection($grade): ErrorResource::notFound();
     }
 }
