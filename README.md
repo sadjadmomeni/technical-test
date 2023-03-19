@@ -80,6 +80,5 @@ After registeration, you can get the token by passing `password` and `email` in 
 ## Future Plans
 - Improve the UI
 - Highlight the points on the map, so it indicates which Turbine is selected
-- Improve tests
 - Add Laravel Echo to send updates to the frond-end (so we have the latest inspection)
 - Moving logic to Service classes (in case we had complex logic)
