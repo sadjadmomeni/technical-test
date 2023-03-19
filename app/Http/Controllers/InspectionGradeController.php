@@ -2,31 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ErrorResource;
+use App\Http\Resources\InspectionGradeResource;
 use App\Models\Grade;
 use Illuminate\Http\Request;
 
 class InspectionGradeController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Display a listing of the grades for the inspection.
      */
     public function index($id)
     {
-        $grades = Grade::where('inspection_id', $id)->with('gradeType')->get();;
-        return $grades? $grades: 'error';
+        $grades = Grade::where('inspection_id', $id)->get();
+        return InspectionGradeResource::collection($grades);
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified grade for the inspection.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
     public function show($id, $gradeId)
     {
-        $grade = Grade::where('id', $gradeId)->where('inspection_id', $id)->with('gradeType')->get();;
-        return $grade? $grade: 'error';
+        $grade = Grade::where('id', $gradeId)->where('inspection_id', $id)->get();;
+        return $grade->isNotEmpty()? new InspectionGradeResource($grade) : ErrorResource::notFound();
     }
 }

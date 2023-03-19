@@ -2,31 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ErrorResource;
+use App\Http\Resources\InspectionResource;
 use App\Models\Inspection;
 use Illuminate\Http\Request;
 
 class InspectionController extends Controller
 {
     /**
-     * Return list of the inspections for a turbine.
-     *
-     * @return \Illuminate\Http\Response
+     * Return list of the inspections
      */
     public function index()
     {
-        $inspections = Inspection::all();
-        return $inspections? $inspections: 'error';
+        return InspectionResource::collection(Inspection::all());
     }
 
     /**
-     * Return an inspection for the turbine.
+     * Return an inspection
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $inspections = Inspection::where('id', $id)->get();
-        return $inspections? $inspections: 'error';
+        $inspections = Inspection::find($id);
+        return $inspections? new InspectionResource($inspections): ErrorResource::notFound();
     }
 }

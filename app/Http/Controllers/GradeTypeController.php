@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ErrorResource;
+use App\Http\Resources\GradeTypeResource;
 use App\Models\GradeType;
 use Illuminate\Http\Request;
 
@@ -9,24 +11,20 @@ class GradeTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $gradeTypes = GradeType::all();
-        return $gradeTypes? $gradeTypes: 'error';
+        return GradeTypeResource::collection(GradeType::all());
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $gradeType = GradeType::where('id', $id)->get();
-        return $gradeType? $gradeType: 'error';
+        $gradeType = GradeType::find($id);
+        return $gradeType? new GradeTypeResource($gradeType): ErrorResource::notFound();
     }
 }

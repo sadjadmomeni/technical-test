@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ErrorResource;
+use App\Http\Resources\FarmTurbineResource;
 use App\Models\Component;
 use App\Models\Farm;
 use App\Models\Inspection;
@@ -12,24 +14,22 @@ class FarmTurbineController extends Controller
 {
     /**
      * Display a listing of the farms.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function index($id)
     {
         $turbines = Turbine::where('farm_id', $id)->get();
-        return $turbines ? $turbines: 'error';
+        return FarmTurbineResource::collection($turbines);
     }
 
     /**
      * Display the specified farm.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
     public function show($id, $turbineId)
     {
         $turbine = Turbine::where('farm_id', $id)->where('id', $turbineId)->get();
-        return $turbine ? $turbine: 'error';
+        return $turbine->isNotEmpty()? new FarmTurbineResource($turbine): ErrorResource::notFound();
+
     }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ComponentTypeResource;
+use App\Http\Resources\ErrorResource;
 use App\Models\ComponentType;
 use Illuminate\Http\Request;
 
@@ -9,24 +11,20 @@ class ComponentTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $componentTypes = ComponentType::all();
-        return $componentTypes? $componentTypes: 'error';
+        return ComponentTypeResource::collection(ComponentType::all());
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $componentType = ComponentType::where('id', $id)->get();
-        return $componentType? $componentType: 'error';
+        $componentType = ComponentType::find($id);
+        return $componentType? new ComponentTypeResource($componentType): ErrorResource::notFound();
     }
 }

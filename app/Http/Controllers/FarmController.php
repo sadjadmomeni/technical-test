@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ErrorResource;
+use App\Http\Resources\FarmResource;
 use App\Models\Component;
 use App\Models\Farm;
 use App\Models\Inspection;
@@ -12,24 +14,20 @@ class FarmController extends Controller
 {
     /**
      * Display a listing of the farms.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $farms = Farm::all();
-        return $farms ? $farms: 'error';
+        return FarmResource::collection(Farm::all());
     }
 
     /**
      * Display the specified farm.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
         $farm = Farm::find($id);
-        return $farm ? $farm: 'error';
+        return $farm ? new FarmResource($farm): ErrorResource::notFound();
     }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ErrorResource;
+use App\Http\Resources\TurbineComponentResource;
 use App\Models\Component;
 use App\Models\Inspection;
 use Illuminate\Http\Request;
@@ -10,26 +12,23 @@ use App\Models\Turbine;
 class TurbineComponentController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Display a listing of the components for the turbine.
      */
     public function index($id)
     {
-        $components = Component::where('turbine_id', $id)->with('componentType')->get();
-        return $components? $components: 'error';
+        $components = Component::where('turbine_id', $id)->get();
+        return TurbineComponentResource::collection($components);
     }
 
     /**
-     * Return a component for the turbine.
+     * Return a specific component for the turbine.
      *
      * @param  int  $id
      * @param  int  $componentId
-     * @return \Illuminate\Http\Response
      */
     public function show($id, $componentId)
     {
-        $component = Component::where('turbine_id', $id)->where('id', $componentId)->with('componentType')->get();
-        return $component? $component: 'error';
+        $component = Component::where('turbine_id', $id)->where('id', $componentId)->get();
+        return $component->isNotEmpty()? new TurbineComponentResource($component): ErrorResource::notFound();
     }
 }
