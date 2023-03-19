@@ -68,3 +68,15 @@ composer install --ignore-platform-reqs
 
 ## Your Notes
 This is a place for you to add your notes, plans, thinking and any feedback you have for us of the task, please feel free to include whatever you like here, we'll make sure to read it. 
+
+## How to Use
+You first need to register and get your token.
+To do that, simpley send a POST request to http://localhost/api/register with the following parameters:
+- name
+- email
+- password
+- confirm_password
+
+You will get the token in the response which you need to use for the rest of api calls.
+After registeration, you can get the token by passing `password` and `email` in a POST request to http://localhost/api/login
+

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\RegisterController;
 use App\Http\Controllers\ComponentController;
 use App\Http\Controllers\ComponentGradeController;
 use App\Http\Controllers\ComponentTypeController;
@@ -27,42 +28,51 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+  
+Route::controller(RegisterController::class)->group(function(){
+    Route::post('register', 'register');
+    Route::post('login', 'login');
+});
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+        
+Route::middleware('auth:sanctum')->group( function () {
+    
+    Route::get('/farms', [FarmController::class, 'index']);
+    Route::get('/farms/{id}', [FarmController::class, 'show']);
 
-Route::get('/farms', [FarmController::class, 'index']);
-Route::get('/farms/{id}', [FarmController::class, 'show']);
+    Route::get('/farms/{id}/turbines', [FarmTurbineController::class, 'index']);
+    Route::get('/farms/{id}/turbines/{turbineId}', [FarmTurbineController::class, 'show']);
 
-Route::get('/farms/{id}/turbines', [FarmTurbineController::class, 'index']);
-Route::get('/farms/{id}/turbines/{turbineId}', [FarmTurbineController::class, 'show']);
+    Route::get('/turbines', [TurbineController::class, 'index']);
+    Route::get('turbines/{id}', [TurbineController::class, 'show']);
 
-Route::get('/turbines', [TurbineController::class, 'index']);
-Route::get('turbines/{id}', [TurbineController::class, 'show']);
+    Route::get('turbines/{id}/components', [TurbineComponentController::class, 'index']);
+    Route::get('turbines/{id}/components/{componentId}', [TurbineComponentController::class, 'show']);
 
-Route::get('turbines/{id}/components', [TurbineComponentController::class, 'index']);
-Route::get('turbines/{id}/components/{componentId}', [TurbineComponentController::class, 'show']);
+    Route::get('turbines/{id}/inspections', [TurbineInspectionController::class, 'index']);
+    Route::get('turbines/{id}/inspections/{inspectionId}', [TurbineInspectionController::class, 'show']);
 
-Route::get('turbines/{id}/inspections', [TurbineInspectionController::class, 'index']);
-Route::get('turbines/{id}/inspections/{inspectionId}', [TurbineInspectionController::class, 'show']);
+    Route::get('/components', [ComponentController::class, 'index']);
+    Route::get('components/{id}', [ComponentController::class, 'show']);
 
-Route::get('/components', [ComponentController::class, 'index']);
-Route::get('components/{id}', [ComponentController::class, 'show']);
+    Route::get('components/{id}/grades', [ComponentGradeController::class, 'index']);
+    Route::get('components/{id}/grades/{gradeId}', [ComponentGradeController::class, 'show']);
 
-Route::get('components/{id}/grades', [ComponentGradeController::class, 'index']);
-Route::get('components/{id}/grades/{gradeId}', [ComponentGradeController::class, 'show']);
+    Route::get('/inspections', [InspectionController::class, 'index']);
+    Route::get('inspections/{id}', [InspectionController::class, 'show']);
 
-Route::get('/inspections', [InspectionController::class, 'index']);
-Route::get('inspections/{id}', [InspectionController::class, 'show']);
+    Route::get('inspections/{id}/grades', [InspectionGradeController::class, 'index']);
+    Route::get('inspections/{id}/grades/{gradeId}', [InspectionGradeController::class, 'show']);
 
-Route::get('inspections/{id}/grades', [InspectionGradeController::class, 'index']);
-Route::get('inspections/{id}/grades/{gradeId}', [InspectionGradeController::class, 'show']);
+    Route::get('/grades', [GradeController::class, 'index']);
+    Route::get('grades/{id}', [GradeController::class, 'show']);
 
-Route::get('/grades', [GradeController::class, 'index']);
-Route::get('grades/{id}', [GradeController::class, 'show']);
+    Route::get('/grade-types', [GradeTypeController::class, 'index']);
+    Route::get('grade-types/{id}', [GradeTypeController::class, 'show']);
 
-Route::get('/grade-types', [GradeTypeController::class, 'index']);
-Route::get('grade-types/{id}', [GradeTypeController::class, 'show']);
-
-Route::get('/component-types', [ComponentTypeController::class, 'index']);
-Route::get('component-types/{id}', [ComponentTypeController::class, 'show']);
+    Route::get('/component-types', [ComponentTypeController::class, 'index']);
+    Route::get('component-types/{id}', [ComponentTypeController::class, 'show']);
+});
