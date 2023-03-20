@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Farm;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $farms = Farm::all();
+        return view('farms', ['farms'=>$farms]);
+    }
+
+    public function show($id)
+    {
+        $farm = Farm::find($id);
+        return view('home', ['farm'=>$farm]);
     }
 }

@@ -12,6 +12,6 @@ class Grade extends Model
 
     public function gradeType()
     {
-        return $this->belongsTo(Turbine::class);
+        return $this->belongsTo(GradeType::class);
     }
 }

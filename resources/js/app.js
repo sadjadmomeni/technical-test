@@ -15,8 +15,14 @@ import { createApp } from 'vue';
 
 const app = createApp({});
 
-import ExampleComponent from './components/ExampleComponent.vue';
-app.component('example-component', ExampleComponent);
+import TurbineComponent from './components/TurbineComponent.vue';
+app.component('turbine-component', TurbineComponent);
+
+import TurbineInspectionComponent from './components/TurbineInspectionComponent.vue';
+app.component('turbine-inspection-component', TurbineInspectionComponent);
+
+import TurbineComponentComponent from './components/TurbineComponentComponent.vue';
+app.component('turbine-component-component', TurbineComponentComponent);
 
 /**
  * The following block of code may be used to automatically register your

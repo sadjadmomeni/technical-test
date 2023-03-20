@@ -15,11 +15,12 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}" />
+    <script defer src="{{ mix('js/app.js') }}"></script>
     <link rel="stylesheet" href="https://js.arcgis.com/4.26/esri/themes/light/main.css">
     <script src="https://js.arcgis.com/4.26/"></script>
 </head>
-<body class="h-100">
+<body >
     <div id="app" class="h-100">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container-fluid h-100">

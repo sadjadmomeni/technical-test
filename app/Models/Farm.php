@@ -9,6 +9,8 @@ class Farm extends Model
 {
     use HasFactory;
 
+    protected $with = ['turbines'];
+
     public function turbines()
     {
         return $this->hasMany(Turbine::class);

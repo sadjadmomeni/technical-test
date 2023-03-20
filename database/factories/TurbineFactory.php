@@ -18,7 +18,7 @@ class TurbineFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->firstName()
+            'name' => 'T-' . $this->faker->randomDigit()
         ];
     }
 }

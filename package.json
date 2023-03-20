@@ -20,5 +20,8 @@
         "sass": "^1.56.1",
         "vue": "^3.2.37",
         "vue-loader": "^16.8.3"
+    },
+    "dependencies": {
+        "esri-loader": "^3.7.0"
     }
 }

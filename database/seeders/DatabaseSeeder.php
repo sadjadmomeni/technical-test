@@ -32,23 +32,23 @@ class DatabaseSeeder extends Seeder
         $farm2 = Farm::factory()->create();
 
         $turbine = Turbine::factory()->create([
-            'lat' => 54.768336993764834,
+            'lat' => 54.768136993764834,
             'long' => -1.8206857153429397,
             'farm_id' => $farm->id
         ]);
         $turbine2 = Turbine::factory()->create([
             'lat' => 54.768337993764834,
-            'long' => -1.8206957153429397,
+            'long' => -1.8226957153429397,
             'farm_id' => $farm->id
         ]);
         $turbine3 = Turbine::factory()->create([
-            'lat' => 54.768336993764834,
-            'long' => -1.8206857153429397,
+            'lat' => 54.768536993764834,
+            'long' => -1.8246857153429397,
             'farm_id' => $farm2->id
         ]);
         $turbine4 = Turbine::factory()->create([
-            'lat' => 53.768337993764834,
-            'long' => -2.8206957153429397,
+            'lat' => 53.768937993764834,
+            'long' => -2.8266957153429397,
             'farm_id' => $farm2->id
         ]);
 
@@ -67,6 +67,13 @@ class DatabaseSeeder extends Seeder
         $inspection = Inspection::factory()->create([
             'turbine_id' => $turbine->id
         ]);
+        Inspection::factory()->create([
+            'turbine_id' => $turbine->id
+        ]);
+        Inspection::factory()->create([
+            'turbine_id' => $turbine->id
+        ]);
+
         Grade::factory()->create([
                 'inspection_id' => $inspection->id,
                 'component_id' => $component->id
@@ -96,6 +103,10 @@ class DatabaseSeeder extends Seeder
         $inspection2 = Inspection::factory()->create([
             'turbine_id' => $turbine2->id
         ]);
+        Inspection::factory()->create([
+            'turbine_id' => $turbine2->id
+        ]);
+
         Grade::factory()->create([
             'inspection_id' => $inspection2->id,
             'component_id' => $component4->id
@@ -124,6 +135,10 @@ class DatabaseSeeder extends Seeder
         $inspection3 = Inspection::factory()->create([
             'turbine_id' => $turbine3->id
         ]);
+        Inspection::factory()->create([
+            'turbine_id' => $turbine3->id
+        ]);
+
         Grade::factory()->create([
             'inspection_id' => $inspection3->id,
             'component_id' => $component7->id
@@ -152,6 +167,10 @@ class DatabaseSeeder extends Seeder
         $inspection4 = Inspection::factory()->create([
             'turbine_id' => $turbine4->id
         ]);
+        Inspection::factory()->create([
+            'turbine_id' => $turbine4->id
+        ]);
+
         Grade::factory()->create([
             'inspection_id' => $inspection4->id,
             'component_id' => $component10->id
