@@ -28,7 +28,7 @@ class InspectionGradeControllerTest extends TestCase
         $this->seed(DatabaseSeeder::class);
         $grade = Grade::first(1);
 
-        $response = $this->getJson('/api/inspections/1/'. $grade->id);
+        $response = $this->getJson('/api/inspections/1/' . $grade->id);
         $response->assertStatus(200);
         $response->assertJsonPath('data.grade_type_id', $grade->grade_type_id);
     }

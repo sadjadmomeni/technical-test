@@ -26,7 +26,7 @@ class FarmTurbineController extends Controller
     public function show($id, $turbineId)
     {
         $turbine = Turbine::where('farm_id', $id)->where('id', $turbineId)->first();
-        return $turbine? new FarmTurbineResource($turbine): ErrorResource::notFound();
+        return $turbine ? new FarmTurbineResource($turbine) : ErrorResource::notFound();
 
     }
 }

@@ -25,7 +25,8 @@ class InspectionGradeController extends Controller
      */
     public function show($id, $gradeId)
     {
-        $grade = Grade::where('id', $gradeId)->where('inspection_id', $id)->first();;
-        return $grade? new InspectionGradeResource($grade) : ErrorResource::notFound();
+        $grade = Grade::where('id', $gradeId)->where('inspection_id', $id)->first();
+        ;
+        return $grade ? new InspectionGradeResource($grade) : ErrorResource::notFound();
     }
 }

@@ -25,6 +25,6 @@ class FarmController extends Controller
     public function show($id)
     {
         $farm = Farm::find($id);
-        return $farm ? new FarmResource($farm): ErrorResource::notFound();
+        return $farm ? new FarmResource($farm) : ErrorResource::notFound();
     }
 }

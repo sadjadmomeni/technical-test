@@ -22,6 +22,6 @@ class TurbineController extends Controller
     public function show($id)
     {
         $turbine = Turbine::find($id);
-        return $turbine? new TurbineResource($turbine): ErrorResource::notFound();
+        return $turbine ? new TurbineResource($turbine) : ErrorResource::notFound();
     }
 }

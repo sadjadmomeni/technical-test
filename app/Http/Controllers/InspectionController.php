@@ -25,6 +25,6 @@ class InspectionController extends Controller
     public function show($id)
     {
         $inspections = Inspection::find($id);
-        return $inspections? new InspectionResource($inspections): ErrorResource::notFound();
+        return $inspections ? new InspectionResource($inspections) : ErrorResource::notFound();
     }
 }

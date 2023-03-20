@@ -28,14 +28,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-  
-Route::controller(RegisterController::class)->group(function(){
+
+Route::controller(RegisterController::class)->group(function () {
     Route::post('register', 'register');
     Route::post('login', 'login');
 });
-        
-Route::middleware('auth:sanctum')->group( function () {
-    
+
+Route::middleware('auth:sanctum')->group(function () {
+
     Route::get('/farms', [FarmController::class, 'index']);
     Route::get('/farms/{id}', [FarmController::class, 'show']);
 

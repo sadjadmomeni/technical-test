@@ -25,6 +25,6 @@ class GradeTypeController extends Controller
     public function show($id)
     {
         $gradeType = GradeType::find($id);
-        return $gradeType? new GradeTypeResource($gradeType): ErrorResource::notFound();
+        return $gradeType ? new GradeTypeResource($gradeType) : ErrorResource::notFound();
     }
 }

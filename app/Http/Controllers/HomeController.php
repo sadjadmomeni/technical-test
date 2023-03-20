@@ -25,12 +25,12 @@ class HomeController extends Controller
     public function index()
     {
         $farms = Farm::all();
-        return view('farms', ['farms'=>$farms]);
+        return view('farms', ['farms' => $farms]);
     }
 
     public function show($id)
     {
         $farm = Farm::find($id);
-        return view('home', ['farm'=>$farm]);
+        return view('home', ['farm' => $farm]);
     }
 }

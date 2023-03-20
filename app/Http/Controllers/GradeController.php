@@ -25,6 +25,6 @@ class GradeController extends Controller
     public function show($id)
     {
         $grade = Grade::find($id);
-        return $grade? new GradeResource($grade): ErrorResource::notFound();
+        return $grade ? new GradeResource($grade) : ErrorResource::notFound();
     }
 }

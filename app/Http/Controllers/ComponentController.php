@@ -25,6 +25,6 @@ class ComponentController extends Controller
     public function show($id)
     {
         $component = Component::find($id);
-        return $component? new ComponentResource($component): ErrorResource::notFound();
+        return $component ? new ComponentResource($component) : ErrorResource::notFound();
     }
 }

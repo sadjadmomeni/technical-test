@@ -3,7 +3,6 @@
 namespace Tests\Feature;
 
 use App\Models\ComponentType;
-use App\Models\GradeType;
 use Database\Seeders\DatabaseSeeder;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\RefreshDatabase;

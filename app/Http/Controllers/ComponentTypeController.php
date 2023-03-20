@@ -25,6 +25,6 @@ class ComponentTypeController extends Controller
     public function show($id)
     {
         $componentType = ComponentType::find($id);
-        return $componentType? new ComponentTypeResource($componentType): ErrorResource::notFound();
+        return $componentType ? new ComponentTypeResource($componentType) : ErrorResource::notFound();
     }
 }

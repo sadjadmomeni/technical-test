@@ -27,6 +27,6 @@ class TurbineComponentController extends Controller
     public function show($id, $componentId)
     {
         $component = Component::where('turbine_id', $id)->where('id', $componentId)->first();
-        return $component? new TurbineComponentResource($component): ErrorResource::notFound();
+        return $component ? new TurbineComponentResource($component) : ErrorResource::notFound();
     }
 }

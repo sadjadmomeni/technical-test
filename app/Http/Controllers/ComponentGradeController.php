@@ -14,7 +14,7 @@ class ComponentGradeController extends Controller
      */
     public function index($id)
     {
-        $grades = Grade::where('component_id', $id)->get();;
+        $grades = Grade::where('component_id', $id)->get();
         return ComponentGradeResource::collection($grades);
     }
 
@@ -26,6 +26,6 @@ class ComponentGradeController extends Controller
     public function show($id, $gradeId)
     {
         $grade = Grade::where('id', $gradeId)->where('component_id', $id)->first();
-        return $grade? ComponentGradeResource::collection($grade): ErrorResource::notFound();
+        return $grade ? ComponentGradeResource::collection($grade) : ErrorResource::notFound();
     }
 }

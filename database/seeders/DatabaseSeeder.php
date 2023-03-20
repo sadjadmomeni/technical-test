@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::factory()->create();
-        
+
         $farm = Farm::factory()->create();
         $farm2 = Farm::factory()->create();
 
@@ -47,8 +47,8 @@ class DatabaseSeeder extends Seeder
             'farm_id' => $farm2->id
         ]);
         $turbine4 = Turbine::factory()->create([
-            'lat' => 53.768937993764834,
-            'long' => -2.8266957153429397,
+            'lat' => 54.768937993764834,
+            'long' => -1.8266957153429397,
             'farm_id' => $farm2->id
         ]);
 
@@ -75,8 +75,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Grade::factory()->create([
-                'inspection_id' => $inspection->id,
-                'component_id' => $component->id
+            'inspection_id' => $inspection->id,
+            'component_id' => $component->id
         ]);
         Grade::factory()->create([
             'inspection_id' => $inspection->id,

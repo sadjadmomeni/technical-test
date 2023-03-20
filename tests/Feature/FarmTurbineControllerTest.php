@@ -13,7 +13,7 @@ class FarmTurbineControllerTest extends TestCase
 {
     use DatabaseMigrations;
     use WithoutMiddleware;
-    Use RefreshDatabase;
+    use RefreshDatabase;
 
     public function test_get_farm_tubines()
     {
