@@ -67,6 +67,7 @@ composer install --ignore-platform-reqs
 ```
 
 ## How to Use
+To have the test data, please run the seeders. To do so, run `sail artisan db:seed`
 You first need to register and get your token.
 To do that, simpley send a POST request to http://localhost/api/register with the following parameters:
 - name
