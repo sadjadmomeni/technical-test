@@ -6,8 +6,10 @@
                 Components
             </div>
             <div class="card-body">
-
-                <table class="table table-bordered">
+                <div v-if="components.length == 0">
+                Please select a Turbine to see list of Components.
+                </div>
+                <table v-if="components.length > 0" class="table table-bordered">
                     <thead>
                         <tr>
                             <th scope="col">Type</th>
@@ -24,9 +26,6 @@
                     </tbody>
                 </table>
 
-                <!-- <div class="list-group">
-                    <a v-for="component in components" :key="component.id" class="list-group-item list-group-item-action" :component-id="component.id">{{component.name}} - {{component.component_type.name}} - {{component.latest_grade[0].grade_type.name}}</a>
-                </div> -->
             </div>
         </div>
     </div>
