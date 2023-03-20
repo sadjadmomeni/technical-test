@@ -21,7 +21,7 @@ class InspectionControllerTest extends TestCase
 
         $response = $this->getJson('/api/inspections');
         $response->assertStatus(200);
-        $response->assertJsonCount(4, 'data');
+        $response->assertJsonCount(9, 'data');
     }
 
     public function test_get_inspection()

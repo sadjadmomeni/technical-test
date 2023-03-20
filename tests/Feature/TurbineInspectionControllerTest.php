@@ -20,7 +20,7 @@ class TurbineInspectionControllerTest extends TestCase
         $this->seed(DatabaseSeeder::class);
         $response = $this->getJson('/api/turbines/1/inspections');
         $response->assertStatus(200);
-        $response->assertJsonCount(1, 'data');
+        $response->assertJsonCount(3, 'data');
     }
     public function test_get_turbines_inspection()
     {
