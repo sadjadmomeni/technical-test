@@ -83,3 +83,4 @@ After registeration, you can get the token by passing `password` and `email` in 
 - Highlight the points on the map, so it indicates which Turbine is selected
 - Add Laravel Echo to send updates to the frond-end (so we have the latest inspection)
 - Moving logic to Service classes (in case we had complex logic)
+- Update tests to not rely on seeder's data
