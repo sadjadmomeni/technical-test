@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\ErrorResource;
 use App\Http\Resources\TurbineComponentResource;
 use App\Models\Component;
-use App\Models\Inspection;
 use Illuminate\Http\Request;
-use App\Models\Turbine;
 
 class TurbineComponentController extends Controller
 {

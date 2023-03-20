@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\ComponentGradeResource;
 use App\Http\Resources\ErrorResource;
-use App\Models\Component;
 use App\Models\Grade;
 use Illuminate\Http\Request;
 
